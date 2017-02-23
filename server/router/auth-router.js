@@ -6,5 +6,6 @@ const basicAuth = require('../lib/basic-auth.js');
 const authRouter = module.exports = new Router();
 
 authRouter.get('/api/login', basicAuth, (req, res, next) => {
-  res.send(req.token);
+  res.send(req.token)
+  .catch(next);
 });

@@ -5,7 +5,8 @@ require('angular').module('myBlogAssignment')
 
 function authService($log, $q, $http, $window) {
   let authToken;
-  let tokenSave = (token) => {
+  let authService = {};
+  authService.tokenSave = (token) => {
     if(!token)
       return $q.reject(new Error('no token'));
     try {
@@ -15,8 +16,6 @@ function authService($log, $q, $http, $window) {
       return $q.reject(err);
     }
   };
-
-  let authService = {};
 
   authService.tokenFetch = () => {
     if(authToken)
@@ -29,7 +28,7 @@ function authService($log, $q, $http, $window) {
     }
   };
 
-  authService.login = function(user){
+  authService.login = (user) => {
     let url = `${__API_URL__}/api/login`;
     let encoded = $window.btoa(`${user.username}:${user.password}`);
     let config = {

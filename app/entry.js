@@ -33,6 +33,7 @@ require('./service/admin-service.js');
 
 // require containers
 require('./container/admin');
+require('./container/dashboard');
 
 // require components
 require('./component/login');

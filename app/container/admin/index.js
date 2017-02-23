@@ -20,6 +20,5 @@ function AdminController($log, authService, $location) {
       })
       .catch($log.error);
     };
-
   };
 }

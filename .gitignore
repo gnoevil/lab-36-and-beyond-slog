@@ -3,7 +3,6 @@
 mock-env.js
 service-accounts.json
 node_modules
-
 # Logs
 logs
 *.log

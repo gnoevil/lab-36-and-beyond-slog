@@ -15,7 +15,7 @@ firebase.initializeApp({
 
 admin.initializeApp({
   credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_CERT)),
-  databaseURL: `${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`,
+  databaseURL:  `${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`,
 });
 
 let app = module.exports = express();

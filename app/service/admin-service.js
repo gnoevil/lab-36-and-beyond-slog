@@ -6,6 +6,7 @@ require('angular').module('myBlogAssignment')
 function authService($log, $q, $http, $window) {
   let authToken;
   let authService = {};
+
   authService.tokenSave = (token) => {
     if(!token)
       return $q.reject(new Error('no token'));

@@ -1,6 +1,6 @@
 'use strict';
 
-require('angular').module('slog')
+require('angular').module('myBlogAssignment')
 .service('pageService', ['$log', '$http', 'authService', createPageService]);
 
 function createPageService($log, $http, authService) {

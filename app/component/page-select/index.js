@@ -1,8 +1,6 @@
-'use strict'
+'use strict';
 
-require('./_page-select.scss');
-
-require('angular').module('slog')
+require('angular').module('myBlogAssignment')
 .component('pageSelect', {
   template: require('./page-select.html'),
   bindings: {
@@ -10,5 +8,5 @@ require('angular').module('slog')
     showAll: '<',
     selected: '<',
     handleSelect: '<',
-  }
-})
+  },
+});

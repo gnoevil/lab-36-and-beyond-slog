@@ -2,9 +2,10 @@
 require('./scss/main.scss');
 
 const angular = require('angular');
+const ngMarked = require('angular-marked');
 const uiRouter = require('angular-ui-router');
 
-angular.module('myBlogAssignment', [uiRouter])
+angular.module('myBlogAssignment', [uiRouter, ngMarked])
 .config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('', '/admin');
   let routes = [
@@ -30,6 +31,8 @@ angular.module('myBlogAssignment', [uiRouter])
 
 // require services
 require('./service/admin-service.js');
+require('./service/page-service.js');
+
 
 // require containers
 require('./container/admin');
@@ -38,3 +41,5 @@ require('./container/dashboard');
 // require components
 require('./component/login');
 require('./component/layout');
+require('./component/page-editor');
+require('./component/page-select');

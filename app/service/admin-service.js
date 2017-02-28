@@ -1,13 +1,12 @@
 'use strict';
 
 require('angular').module('myBlogAssignment')
-.service('authService', ['$log', '$q', '$http', '$window', authService]);
+.service('authService', ['$log', '$q', '$window', '$http', authService]);
 
-function authService($log, $q, $http, $window) {
+function authService($log, $q, $window, $http) {
   let authToken;
-  let authService = {};
 
-  authService.tokenSave = (token) => {
+  let tokenSave = (token) => {
     if(!token)
       return $q.reject(new Error('no token'));
     try {
@@ -17,7 +16,7 @@ function authService($log, $q, $http, $window) {
       return $q.reject(err);
     }
   };
-
+  let authService = {};
   authService.tokenFetch = () => {
     if(authToken)
       return $q.resolve(authToken);
@@ -31,7 +30,7 @@ function authService($log, $q, $http, $window) {
 
   authService.login = (user) => {
     let url = `${__API_URL__}/api/login`;
-    let encoded = $window.btoa(`${user.username}:${user.password}`);
+    let encoded = $window.btoa(`${user.email}:${user.password}`);
     let config = {
       headers: {
         Accept: 'application/json',
@@ -40,8 +39,7 @@ function authService($log, $q, $http, $window) {
     };
     return $http.get(url, config)
     .then(res => {
-      $log.log('success');
-      return res.data;
+      return tokenSave(res.data);
     });
   };
   return authService;

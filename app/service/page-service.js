@@ -17,7 +17,6 @@ function createPageService($log, $http, authService) {
         },
       };
       page.showInNav = !!page.showInNav;
-      console.log('page', page);
       return $http.put(url, page, config);
     })
     .then(res => res.data);

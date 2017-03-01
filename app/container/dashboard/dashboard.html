@@ -6,10 +6,13 @@
   selected="$ctrl.pageSelectSelected"
   handle-select="$ctrl.pageSelectHandleSelect">
 </page-select>
-<button ng-click="$ctrl.handlePageNew()">Clear Form</button>
-<button ng-click="$ctrl.handlePageDelete($ctrl.pageSelectSelected)"> DEL </button>
-<div marked="$ctrl.pageEditorPage.content">
+
+<div class="dashboard-btns">
+  <button ng-click="$ctrl.handlePageNew()">Clear Form</button>
+  <button ng-click="$ctrl.handlePageDelete($ctrl.pageSelectSelected)"> DEL </button>
+  <button ng-click="$ctrl.handlePageCopy($ctrl.pageSelectSelected)"> COPY LINK </button>
 </div>
+
 <page-editor
 page="$ctrl.pageEditorPage"
 handle-submit="$ctrl.pageEditorHandleSubmit">

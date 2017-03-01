@@ -1,9 +1,11 @@
 'use strict';
 
+require('./_dashboard.scss');
+
 require('angular').module('myBlogAssignment')
 .component('dashboard', {
   template: require('./dashboard.html'),
-  controller: ['$log','pageService', function($log, pageService){
+  controller: ['$log', 'clipboard','pageService', function($log, clipboard, pageService){
     this.$onInit = () => {
       this.pageSelectPages = [];
       this.pageSelectShowAll = false;
@@ -25,6 +27,9 @@ require('angular').module('myBlogAssignment')
       };
       this.handlePageNew = () => {
         this.pageEditorPage = {title: '', content: '', showInNav: false};
+      };
+      this.handlePageCopy = (page) => {
+        clipboard.copyText(`[](/#!/home/${page.id})`);
       };
       this.handlePageDelete = (page) => {
         pageService.delete(page)

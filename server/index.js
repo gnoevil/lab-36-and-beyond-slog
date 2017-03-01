@@ -27,9 +27,9 @@ app.use(require('./router/auth-router.js'));
 app.use(require('./router/page-router.js'));
 
 app.use((err, req, res, next) => {
-  console.error(err.message);
+  console.error(err);
   if(err.status)
     return res.sendStatus(err.status);
-  res.sendStatus(500)
-  .catch(next);
+  res.sendStatus(500);
+  next();
 });

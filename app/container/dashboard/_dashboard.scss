@@ -1,0 +1,26 @@
+@import  "../../scss/_theme.scss";
+
+.dashboard {
+  height: 100%;
+  background: $c-grey;
+
+
+
+  .dashboard-btns {
+    button {
+      display: inline-block;
+      width: auto;
+      padding: $s-pad;
+    }
+  }
+
+  .page-preview {
+    height: 50%;
+    background: #ccc;
+  }
+
+  .page-editor {
+    height: 30%;
+    border: 2px dotted #ccc;
+  }
+}

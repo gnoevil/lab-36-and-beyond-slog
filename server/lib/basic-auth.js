@@ -5,9 +5,9 @@ const firebase = require('firebase');
 const admin = require('firebase-admin');
 
 module.exports = (req, res, next) => {
-  console.log(req.headers.authorization);
   if (!req.headers.authorization)
     return next(createError(401, 'no Authorization header'));
+
   let encoded = req.headers.authorization.split('Basic ')[1];
   if(!encoded)
     return next(createError(401, 'no basic auth'));
@@ -17,7 +17,6 @@ module.exports = (req, res, next) => {
     return next(createError(401, 'no base64 string'));
 
   let [email, password] = decoded.split(':');
-  console.log([email, password]);
   if(!email || !password)
     return next(createError(401, 'no email || password'));
 
@@ -30,5 +29,8 @@ module.exports = (req, res, next) => {
     return firebase.auth().signOut();
   })
   .then(() => next())
-  .catch(err => next(createError(401, err.message)));
+  .catch(err => {
+    firebase.auth().signOut();
+    next(createError(401, err.message));
+  });
 };

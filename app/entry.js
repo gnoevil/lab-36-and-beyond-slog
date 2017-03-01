@@ -24,11 +24,6 @@ angular.module('myBlogAssignment', [uiRouter, ngMarked, ngClipboard.name, 'ngTou
       template: '<home></home>',
     },
     {
-      name: 'layout',
-      url: '/layout',
-      template: '<layout></layout>',
-    },
-    {
       name: 'admin',
       url: '/admin',
       template: '<admin></admin>',
@@ -55,7 +50,6 @@ require('./container/home');
 
 // require components
 require('./component/login');
-require('./component/layout');
 require('./component/page-editor');
 require('./component/page-select');
 require('./component/page-searchbar');

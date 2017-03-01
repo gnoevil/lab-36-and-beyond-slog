@@ -43,7 +43,6 @@ require('angular').module('myBlogAssignment')
       };
       pageService.fetchAll()
       .then(pages => {
-        console.log('pages', pages);
         this.pageSelectPages = pages;
         this.pageSelectSelected = pages[0];
       });

@@ -1,4 +1,5 @@
 'use strict';
+
 require('./scss/main.scss');
 
 const angular = require('angular');
@@ -9,9 +10,19 @@ const ngAnimate = require('angular-animate');
 const ngTouch = require('angular-touch');
 
 angular.module('myBlogAssignment', [uiRouter, ngMarked, ngClipboard.name, 'ngTouch', 'ngAnimate'])
-.config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.when('', '/admin');
+.config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.when('', '/home');
   let routes = [
+    {
+      name: 'home',
+      url: '/home',
+      template: '<home></home>',
+    },
+    {
+      name: 'homepage',
+      url: '/home/:id',
+      template: '<home></home>',
+    },
     {
       name: 'layout',
       url: '/layout',
@@ -40,9 +51,12 @@ require('./service/page-service.js');
 // require containers
 require('./container/admin');
 require('./container/dashboard');
+require('./container/home');
 
 // require components
 require('./component/login');
 require('./component/layout');
 require('./component/page-editor');
 require('./component/page-select');
+require('./component/page-searchbar');
+require('./component/navbar');

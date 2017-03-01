@@ -11,7 +11,7 @@ const Page = module.exports = function(opts){
   this.showInNav = opts.showInNav;
 };
 
-Page.fetchAll = function(){
+Page.fetchAll = function() {
   return firebase.database().ref('/pages').once('value')
   .then(snapShot => {
     let data = snapShot.val();
@@ -21,7 +21,7 @@ Page.fetchAll = function(){
   .catch(() => []);
 };
 
-Page.findByIdAndDelete = function(id){
+Page.findByIdAndDelete = function(id) {
   return firebase.database().ref('/pages')
   .child(id).remove()
   .then(() => firebase.auth().signOut())

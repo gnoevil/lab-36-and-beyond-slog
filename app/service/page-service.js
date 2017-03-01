@@ -6,7 +6,7 @@ require('angular').module('myBlogAssignment')
 function createPageService($log, $http, authService) {
   let pageService = {};
 
-  pageService.create = (page) => {
+  pageService.create = page => {
     return authService.tokenFetch()
     .then(token => {
       let url = `${__API_URL__}/api/page`;
@@ -33,7 +33,7 @@ function createPageService($log, $http, authService) {
     .then(res => res.data);
   };
 
-  pageService.delete = (page) => {
+  pageService.delete = page => {
     return authService.tokenFetch()
     .then(token => {
       let url = `${__API_URL__}/api/page/${page.id}`;
